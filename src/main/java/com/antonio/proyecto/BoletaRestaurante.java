@@ -18,7 +18,6 @@ public class BoletaRestaurante
     private ClienteRestaurante CCliente;
     private int NumeroCalorias;
     private double Total;
-    private static ArrayList<BoletaRestaurante> LBoletaRestaurante=new ArrayList<BoletaRestaurante>();
 
     public BoletaRestaurante(int CodigoBoleta, Date FechaBoleta, ClienteRestaurante CCliente, int NumeroCalorias, double Total)
     {
@@ -27,10 +26,6 @@ public class BoletaRestaurante
         this.CCliente = CCliente;   
         this.NumeroCalorias = NumeroCalorias;
         this.Total = Total;
-    }
-
-    public static void Guardar(BoletaRestaurante boleta) {
-        LBoletaRestaurante.add(boleta);
     }
 
     public int getCodigoBoleta() {
@@ -65,7 +60,7 @@ public class BoletaRestaurante
         this.CCliente = CCliente;
     }
        
-    public static void InsertarDatosBoleta() throws ParseException
+    public static void InsertarDatosBoleta(int indiceBoleta) throws ParseException
     {
        
        int IDBoleta;
@@ -104,7 +99,7 @@ public class BoletaRestaurante
             Total=OperacionesRestaurante.ValidarDouble();
 
             BoletaRestaurante boleta = new BoletaRestaurante(IDBoleta,Fecha,cliente,Calorias,Total);
-            cliente.GuardarBoleta(boleta);
+            cliente.GuardarBoleta(boleta, indiceBoleta);
 
             System.out.println("Boleta creada con exito");
 
@@ -116,20 +111,9 @@ public class BoletaRestaurante
         Scanner Entrada=new Scanner(System.in);
         Entrada.useDelimiter("\n");
         int CodigoBoleta=Entrada.nextInt();
-        BoletaRestaurante.EliminarBoleta(CodigoBoleta);
+        ClienteRestaurante.EliminarBoletaLista(CodigoBoleta);
     }
         
-    public static void EliminarBoleta(int CodigoBoleta) {
-        ListIterator<BoletaRestaurante> i = LBoletaRestaurante.listIterator();
-        while(i.hasNext()) {
-            BoletaRestaurante boleta = i.next();
-            if(boleta.CodigoBoleta == CodigoBoleta) {
-                boleta.CCliente.EliminarBoleta(CodigoBoleta);
-                i.remove();
-            }
-        }
-    }
-
     /* lista anidada boletas de cliente */
     public static void ImprimirDatos(ClienteRestaurante CCliente){
         ArrayList<BoletaRestaurante> LBoletasCliente = CCliente.getLBoletaCliente();
@@ -148,27 +132,4 @@ public class BoletaRestaurante
         System.out.println("Total: " + this.Total);
     }
 
-    public static void GenerarReporteBoletas() {
-        String separador = ",";
-        try {
-            BufferedWriter writer;
-            writer = new BufferedWriter(new FileWriter("reporte_boletas.csv"));
-            writer.write("CODIGO"+separador+"FECHA"+separador+"CALORIAS"+separador+"TOTAL\n");
-            for(BoletaRestaurante boleta : LBoletaRestaurante) {
-                writer.append(Integer.toString(boleta.getCodigoBoleta()));
-                writer.append(separador);
-                Calendar fechaN = Calendar.getInstance();
-                fechaN.setTime(boleta.getFechaBoleta());
-                writer.append(fechaN.get(Calendar.DAY_OF_MONTH) + "/" + fechaN.get(Calendar.MONTH) + "/" + fechaN.get(Calendar.YEAR));
-                writer.append(separador);
-                writer.append(Integer.toString(boleta.getNumeroCalorias()));
-                writer.append(separador);
-                writer.append(Double.toString(boleta.getTotal()));
-                writer.append("\n");
-            }
-            writer.close();
-        } catch (IOException ex) {
-            Logger.getLogger(ClienteRestaurante.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
 }

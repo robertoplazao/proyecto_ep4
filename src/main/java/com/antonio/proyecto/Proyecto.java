@@ -26,9 +26,9 @@ public class Proyecto {
             // Boletas Cliente 1
 			Date fechaBoleta1 = new SimpleDateFormat("dd/MM/yyyy").parse("05/05/2022");
             BoletaRestaurante boleta1 = new BoletaRestaurante(123,fechaBoleta1,cliente1,1200,23500.0);
-            cliente1.GuardarBoleta(boleta1);
+            cliente1.GuardarBoleta(boleta1, -1);
             BoletaRestaurante boleta2 = new BoletaRestaurante(432,fechaBoleta1,cliente1,1800,30000.0);
-            cliente1.GuardarBoleta(boleta2);
+            cliente1.GuardarBoleta(boleta2, -1);
 			
             // Cliente 2
 			String rut2 = "5243450-7";
@@ -44,10 +44,10 @@ public class Proyecto {
             // Boletas Cliente 3
 			Date fechaBoleta3 = new SimpleDateFormat("dd/MM/yyyy").parse("23/03/2022");
             BoletaRestaurante boleta3 = new BoletaRestaurante(800,fechaBoleta3,cliente3,800,15300.0);
-            cliente3.GuardarBoleta(boleta3);
+            cliente3.GuardarBoleta(boleta3, -1);
 			Date fechaBoleta4 = new SimpleDateFormat("dd/MM/yyyy").parse("17/04/2022");
             BoletaRestaurante boleta4 = new BoletaRestaurante(999,fechaBoleta4,cliente3,1100,17000.0);
-            cliente3.GuardarBoleta(boleta4);
+            cliente3.GuardarBoleta(boleta4, -1);
 			
 			OperacionesRestaurante.Menu();
 		} catch (ParseException ex) {

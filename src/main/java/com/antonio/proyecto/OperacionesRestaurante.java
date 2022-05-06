@@ -40,7 +40,7 @@ public class OperacionesRestaurante {
                     
                 case 3:
                     Mensaje(" A seleccionado Crear Boleta");
-                    BoletaRestaurante.InsertarDatosBoleta();
+                    BoletaRestaurante.InsertarDatosBoleta(-1);
                     break;
                     
                     
@@ -56,8 +56,12 @@ public class OperacionesRestaurante {
                     break;
 
                 case 6:
-                    Mensaje(" A seleccionado Listar Actualizar Cliente");
+                    Mensaje(" A seleccionado Actualizar Cliente");
                     ClienteRestaurante.ActualizarPersonaMenu();
+                    break;
+                case 7:
+                    Mensaje(" A seleccionado Actualizar Boleta");
+                    ClienteRestaurante.ActualizarBoletaMenu();
                     break;
 
 
@@ -77,7 +81,7 @@ public class OperacionesRestaurante {
                     break;
                 case 11:
                     Mensaje(" A seleccionado Reporte Boletas");
-                    BoletaRestaurante.GenerarReporteBoletas();
+                    ClienteRestaurante.GenerarReporteBoletas();
                     break;
                     
                 case 12:

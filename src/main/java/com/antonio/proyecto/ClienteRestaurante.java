@@ -66,9 +66,23 @@ public class ClienteRestaurante {
         this.FechaN = FechaN;
     }
 
-    public void GuardarBoleta(BoletaRestaurante boleta) {
-        BoletaRestaurante.Guardar(boleta);
-        LBoletaCliente.add(boleta);
+    public void GuardarBoleta(BoletaRestaurante boleta, int indiceBoleta) {
+        if(indiceBoleta == -1) {
+            LBoletaCliente.add(boleta);
+        } else {
+            LBoletaCliente.set(indiceBoleta, boleta);
+        }
+    }
+
+    public static void EliminarBoletaLista(int CodigoBoleta) {
+        // buscamos el cliente con la boleta correspondiente
+        for (int i = 0; i < LClienteRestaurante.size(); i++) {
+            for(BoletaRestaurante boleta : LClienteRestaurante.get(i).LBoletaCliente) {
+                if(boleta.getCodigoBoleta() == CodigoBoleta) {
+                    LClienteRestaurante.get(i).EliminarBoleta(CodigoBoleta);
+                }
+            }
+        }
     }
 
     public static void Guardar(ClienteRestaurante cliente, int indiceCliente) {
@@ -102,7 +116,7 @@ public class ClienteRestaurante {
         // Primero borramos las boletas asociadas al cliente
         ClienteRestaurante cliente = BuscarPersona(RutCliente);
         for(BoletaRestaurante boleta : cliente.LBoletaCliente) {
-            BoletaRestaurante.EliminarBoleta(boleta.getCodigoBoleta());
+            ClienteRestaurante.EliminarBoletaLista(boleta.getCodigoBoleta());
         }
 
         // Y luego borramos el cliente
@@ -162,6 +176,30 @@ public class ClienteRestaurante {
         }
     }
 
+    public static void ActualizarBoletaMenu() {
+        System.out.println("Digite el Codigo Boleta");
+        Scanner Entrada=new Scanner(System.in);
+        Entrada.useDelimiter("\n");
+        int CodigoBoleta=Entrada.nextInt();
+        int indiceBoleta = -1;
+        for (int i = 0; i < LClienteRestaurante.size(); i++) {
+            for(int j = 0; j < LClienteRestaurante.get(i).LBoletaCliente.size(); j++) {
+                if(LClienteRestaurante.get(i).LBoletaCliente.get(j).getCodigoBoleta() == CodigoBoleta) {
+                    indiceBoleta = j;
+                }
+            }
+        }
+        if(indiceBoleta == -1) {
+            System.out.println("La boleta no existe");
+        } else {
+            try {
+                BoletaRestaurante.InsertarDatosBoleta(indiceBoleta);
+            } catch (ParseException ex) {
+                Logger.getLogger(ClienteRestaurante.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
     public static void EliminarPersonaMenu() {
         System.out.println("Digite el Rut Cliente");
         Scanner Entrada=new Scanner(System.in);
@@ -212,6 +250,34 @@ public class ClienteRestaurante {
                 fechaN.setTime(cliente.getFechaN());
                 writer.append(fechaN.get(Calendar.DAY_OF_MONTH) + "/" + fechaN.get(Calendar.MONTH) + "/" + fechaN.get(Calendar.YEAR));
                 writer.append("\n");
+            }
+            writer.close();
+        } catch (IOException ex) {
+            Logger.getLogger(ClienteRestaurante.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public static void GenerarReporteBoletas() {
+        String separador = ",";
+        try {
+            BufferedWriter writer;
+            writer = new BufferedWriter(new FileWriter("reporte_boletas.csv"));
+            writer.write("CLIENTE"+separador+"CODIGO"+separador+"FECHA"+separador+"CALORIAS"+separador+"TOTAL\n");
+            for(ClienteRestaurante cliente : LClienteRestaurante) {
+                for(BoletaRestaurante boleta : cliente.LBoletaCliente) {
+                    writer.append(cliente.getNombreCliente());
+                    writer.append(separador);
+                    writer.append(Integer.toString(boleta.getCodigoBoleta()));
+                    writer.append(separador);
+                    Calendar fechaN = Calendar.getInstance();
+                    fechaN.setTime(boleta.getFechaBoleta());
+                    writer.append(fechaN.get(Calendar.DAY_OF_MONTH) + "/" + fechaN.get(Calendar.MONTH) + "/" + fechaN.get(Calendar.YEAR));
+                    writer.append(separador);
+                    writer.append(Integer.toString(boleta.getNumeroCalorias()));
+                    writer.append(separador);
+                    writer.append(Double.toString(boleta.getTotal()));
+                    writer.append("\n");
+                }
             }
             writer.close();
         } catch (IOException ex) {
