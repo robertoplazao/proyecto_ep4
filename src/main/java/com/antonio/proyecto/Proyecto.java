@@ -21,7 +21,7 @@ public class Proyecto {
 			String rut1 = "12345678-9";
 			Date fecha1 = new SimpleDateFormat("dd/MM/yyyy").parse("23/03/1990");
             ClienteRestaurante cliente1 = new ClienteRestaurante("Pedro Perez", rut1, fecha1);
-			ClienteRestaurante.Guardar(cliente1);
+			ClienteRestaurante.Guardar(cliente1, -1);
 
             // Boletas Cliente 1
 			Date fechaBoleta1 = new SimpleDateFormat("dd/MM/yyyy").parse("05/05/2022");
@@ -33,13 +33,13 @@ public class Proyecto {
             // Cliente 2
 			String rut2 = "5243450-7";
 			Date fecha2 = new SimpleDateFormat("dd/MM/yyyy").parse("19/12/1985");
-			ClienteRestaurante.Guardar(new ClienteRestaurante("Juana Ramirez", rut2, fecha2));
+			ClienteRestaurante.Guardar(new ClienteRestaurante("Juana Ramirez", rut2, fecha2), -1);
 			
             // Cliente 3
 			String rut3 = "2341234-3";
 			Date fecha3 = new SimpleDateFormat("dd/MM/yyyy").parse("07/08/1993");
             ClienteRestaurante cliente3 = new ClienteRestaurante("Jose Hernandez", rut3, fecha3);
-			ClienteRestaurante.Guardar(cliente3);
+			ClienteRestaurante.Guardar(cliente3, -1);
 
             // Boletas Cliente 3
 			Date fechaBoleta3 = new SimpleDateFormat("dd/MM/yyyy").parse("23/03/2022");

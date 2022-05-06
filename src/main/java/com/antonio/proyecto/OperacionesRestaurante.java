@@ -30,7 +30,7 @@ public class OperacionesRestaurante {
             switch(opcion) {
                 case 1:
                     Mensaje(" A seleccionado Crear Cliente");
-                    ClienteRestaurante.CrearDatosCliente();
+                    ClienteRestaurante.CrearDatosCliente(-1);
                     break;
                 case 2:
                     Mensaje(" A seleccionado Listar Clientes");
@@ -54,6 +54,12 @@ public class OperacionesRestaurante {
                     Mensaje(" A seleccionado Listar Boletas de Cliente");
                     ClienteRestaurante.ListarBoletasClienteMenu();
                     break;
+
+                case 6:
+                    Mensaje(" A seleccionado Listar Actualizar Cliente");
+                    ClienteRestaurante.ActualizarPersonaMenu();
+                    break;
+
 
                 case 8:
                     Mensaje(" A seleccionado Eliminar Cliente");

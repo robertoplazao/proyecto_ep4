@@ -71,18 +71,11 @@ public class ClienteRestaurante {
         LBoletaCliente.add(boleta);
     }
 
-    public static void Guardar(ClienteRestaurante cliente) {
-        int indiceCliente = -1;
-        // si el cliente con este RUT ya existe, lo actualizamos
-        for(int i = 0; i < LClienteRestaurante.size(); i++) {
-            if(LClienteRestaurante.get(i).getRutCliente().equals(cliente.getRutCliente())) {
-                indiceCliente = i;
-                break;
-            }
-        }
+    public static void Guardar(ClienteRestaurante cliente, int indiceCliente) {
         if(indiceCliente == -1) {
             LClienteRestaurante.add(cliente);
         } else {
+        // si el cliente con este RUT ya existe, lo actualizamos
             LClienteRestaurante.set(indiceCliente, cliente);
         }
     }
@@ -121,7 +114,7 @@ public class ClienteRestaurante {
         }
     }
 
-    public static void CrearDatosCliente() throws ParseException {
+    public static void CrearDatosCliente(int indiceCliente) throws ParseException {
         String Nombre, Rut;
         Date Fecha;
         String Fecha2;
@@ -139,7 +132,7 @@ public class ClienteRestaurante {
         Fecha2 = Entrada.nextLine();
 
         Fecha = new SimpleDateFormat("dd/MM/yyyy").parse(Fecha2);
-        Guardar(new ClienteRestaurante(Nombre, Rut, Fecha));
+        Guardar(new ClienteRestaurante(Nombre, Rut, Fecha), indiceCliente);
 
         System.out.println("Dato de cliente creado con exito!!!!");
 
@@ -151,18 +144,18 @@ public class ClienteRestaurante {
         Scanner Entrada=new Scanner(System.in);
         Entrada.useDelimiter("\n");
         String RutCliente=Entrada.nextLine();
-        ClienteRestaurante clienteBusqueda = null;
+        int indiceCliente = -1;
         for(int i = 0; i < LClienteRestaurante.size(); i++) {
             if(LClienteRestaurante.get(i).getRutCliente().equals(RutCliente)) {
-                clienteBusqueda = LClienteRestaurante.get(i);
+                indiceCliente = i;
                 break;
             }
         }
-        if(clienteBusqueda == null) {
+        if(indiceCliente == -1) {
             System.out.println("El cliente no existe");
         } else {
             try {
-                ClienteRestaurante.CrearDatosCliente();
+                ClienteRestaurante.CrearDatosCliente(indiceCliente);
             } catch (ParseException ex) {
                 Logger.getLogger(ClienteRestaurante.class.getName()).log(Level.SEVERE, null, ex);
             }
