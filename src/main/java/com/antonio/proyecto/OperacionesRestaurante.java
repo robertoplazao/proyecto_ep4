@@ -40,7 +40,7 @@ public class OperacionesRestaurante {
                     
                 case 3:
                     Mensaje(" A seleccionado Crear Boleta");
-                    BoletaRestaurante.InsertarDatosBoleta(-1);
+                    BoletaRestaurante.InsertarDatosBoleta();
                     break;
                     
                     

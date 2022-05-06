@@ -60,7 +60,7 @@ public class BoletaRestaurante
         this.CCliente = CCliente;
     }
        
-    public static void InsertarDatosBoleta(int indiceBoleta) throws ParseException
+    public static void InsertarDatosBoleta() throws ParseException
     {
        
        int IDBoleta;
@@ -99,12 +99,54 @@ public class BoletaRestaurante
             Total=OperacionesRestaurante.ValidarDouble();
 
             BoletaRestaurante boleta = new BoletaRestaurante(IDBoleta,Fecha,cliente,Calorias,Total);
-            cliente.GuardarBoleta(boleta, indiceBoleta);
+            cliente.GuardarBoleta(boleta, -1);
 
             System.out.println("Boleta creada con exito");
 
        }
    }
+
+    public static void InsertarDatosBoletaExistente(int indiceBoleta, String RCliente) throws ParseException
+    {
+       
+       int IDBoleta;
+       String Fecha2;
+       Date Fecha = null;
+       double Total;
+       int Calorias;
+       
+       Scanner Entrada=new Scanner(System.in);
+       Entrada.useDelimiter("\n");
+
+       if(ClienteRestaurante.BuscarPersona(RCliente) != null)
+       {
+            ClienteRestaurante cliente = ClienteRestaurante.BuscarPersona(RCliente);
+
+            System.out.println("Datos de cliente");
+            System.out.println("Rut: "+cliente.getRutCliente());
+            System.out.println("Nombre: "+cliente.getNombreCliente());
+
+            System.out.println("Digite numero de la Boleta");
+            IDBoleta=OperacionesRestaurante.ValidarEntero();
+
+            System.out.println("Digite la Fecha Boleta");
+            Fecha2=Entrada.nextLine();
+
+            Fecha=new SimpleDateFormat("dd/MM/yyyy").parse(Fecha2);
+            
+            System.out.println("Numero de calorias consumidas");
+            Calorias=OperacionesRestaurante.ValidarEntero();
+
+            System.out.println("Total de Factura");
+            Total=OperacionesRestaurante.ValidarDouble();
+
+            BoletaRestaurante boleta = new BoletaRestaurante(IDBoleta,Fecha,cliente,Calorias,Total);
+            cliente.GuardarBoleta(boleta, indiceBoleta);
+
+            System.out.println("Boleta actualizada con exito");
+       }
+   }
+
 
     public static void EliminarBoletaMenu() {
         System.out.println("Digite el Codigo Boleta");

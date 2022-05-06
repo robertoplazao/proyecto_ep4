@@ -182,10 +182,13 @@ public class ClienteRestaurante {
         Entrada.useDelimiter("\n");
         int CodigoBoleta=Entrada.nextInt();
         int indiceBoleta = -1;
+        String RCliente = "";
         for (int i = 0; i < LClienteRestaurante.size(); i++) {
             for(int j = 0; j < LClienteRestaurante.get(i).LBoletaCliente.size(); j++) {
                 if(LClienteRestaurante.get(i).LBoletaCliente.get(j).getCodigoBoleta() == CodigoBoleta) {
                     indiceBoleta = j;
+                    RCliente = LClienteRestaurante.get(i).getRutCliente();
+                    break;
                 }
             }
         }
@@ -193,7 +196,7 @@ public class ClienteRestaurante {
             System.out.println("La boleta no existe");
         } else {
             try {
-                BoletaRestaurante.InsertarDatosBoleta(indiceBoleta);
+                BoletaRestaurante.InsertarDatosBoletaExistente(indiceBoleta, RCliente);
             } catch (ParseException ex) {
                 Logger.getLogger(ClienteRestaurante.class.getName()).log(Level.SEVERE, null, ex);
             }
