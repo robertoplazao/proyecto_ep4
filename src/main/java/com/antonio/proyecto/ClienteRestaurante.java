@@ -187,6 +187,16 @@ public class ClienteRestaurante {
         }
     }
 
+    public static void ImprimirBoletas() {
+        System.out.println("***Boletas:");
+        for (int i = 0; i < LClienteRestaurante.size(); i++) {
+            // Imprimiendo coleccion dentro de coleccion
+            for(BoletaRestaurante boleta : LClienteRestaurante.get(i).LBoletaCliente) {
+                boleta.Imprimir();
+            }
+        }
+    }
+
     public static void GenerarReporteClientes() {
         String separador = ",";
         try {

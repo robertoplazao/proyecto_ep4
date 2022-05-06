@@ -46,7 +46,7 @@ public class OperacionesRestaurante {
                     
                 case 4:
                     Mensaje(" A seleccionado Listar Boletas");
-                    BoletaRestaurante.ImprimirDatos();
+                    ClienteRestaurante.ImprimirBoletas();
                     break;
                     
                     /* muestra lista anidada boletas de cliente */

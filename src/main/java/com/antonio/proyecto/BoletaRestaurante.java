@@ -118,15 +118,7 @@ public class BoletaRestaurante
         int CodigoBoleta=Entrada.nextInt();
         BoletaRestaurante.EliminarBoleta(CodigoBoleta);
     }
-    
         
-    public static void ImprimirDatos(){
-        for (int i = 0; i < LBoletaRestaurante.size(); i++) {
-            System.out.println("Boleta #" + (i + 1));
-            LBoletaRestaurante.get(i).Imprimir();
-        }
-    }
-
     public static void EliminarBoleta(int CodigoBoleta) {
         ListIterator<BoletaRestaurante> i = LBoletaRestaurante.listIterator();
         while(i.hasNext()) {
