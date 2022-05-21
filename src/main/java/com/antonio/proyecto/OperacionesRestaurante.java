@@ -3,27 +3,34 @@ package com.antonio.proyecto;
 import java.text.ParseException;
 import java.util.Scanner;
 
+/**
+ * Clase principal para operaciones del restaurante
+ */
 public class OperacionesRestaurante {
     private static Scanner Entrada=new Scanner(System.in);
     
-    public OperacionesRestaurante()
-    {
-    }
+    public OperacionesRestaurante() { }
+
+    /**
+     * Muestra el menú principal de la aplicación
+     * @throws ParseException
+     */
     public static void Menu() throws ParseException {
         int opcion;
         do {
             Mensaje("1-Crear Clientes");
             Mensaje("2-Listar Clientes");
-            Mensaje("3-Crear Boleta");
-            Mensaje("4-Listar Boletas");
-            Mensaje("5-Listar Boletas de Cliente");
-            Mensaje("6-Actualizar Cliente");
-            Mensaje("7-Actualizar Boleta");
-            Mensaje("8-Eliminar Cliente");
-            Mensaje("9-Eliminar Boleta");
-            Mensaje("10-Reporte Clientes");
-            Mensaje("11-Reporte Boletas");
-            Mensaje("12- Salir");
+            Mensaje("3-Registrar Orden");
+            Mensaje("4-Crear Boleta");
+            Mensaje("5-Listar Boletas");
+            Mensaje("6-Listar Boletas de Cliente");
+            Mensaje("7-Actualizar Cliente");
+            Mensaje("8-Actualizar Boleta");
+            Mensaje("9-Eliminar Cliente");
+            Mensaje("10-Eliminar Boleta");
+            Mensaje("11-Reporte Clientes");
+            Mensaje("12-Reporte Boletas");
+            Mensaje("13- Salir");
             Mensaje("Digite la opcion");
             opcion=Entrada.nextInt();
             
@@ -37,54 +44,59 @@ public class OperacionesRestaurante {
                     ClienteRestaurante.ImprimirDatos();
                     break;
                     
-                    
+                /* Nueva Funcionalidad */
                 case 3:
+                    Mensaje(" A seleccionado Registrar Orden");
+                    BoletaRestaurante.RegistrarOrdenBoleta();
+                    break;
+                    
+                case 4:
                     Mensaje(" A seleccionado Crear Boleta");
                     BoletaRestaurante.InsertarDatosBoleta();
                     break;
                     
                     
-                case 4:
+                case 5:
                     Mensaje(" A seleccionado Listar Boletas");
                     ClienteRestaurante.ImprimirBoletas();
                     break;
                     
                     /* muestra lista anidada boletas de cliente */
-                case 5:
+                case 6:
                     Mensaje(" A seleccionado Listar Boletas de Cliente");
                     ClienteRestaurante.ListarBoletasClienteMenu();
                     break;
 
-                case 6:
+                case 7:
                     Mensaje(" A seleccionado Actualizar Cliente");
                     ClienteRestaurante.ActualizarPersonaMenu();
                     break;
-                case 7:
+                case 8:
                     Mensaje(" A seleccionado Actualizar Boleta");
                     ClienteRestaurante.ActualizarBoletaMenu();
                     break;
 
 
-                case 8:
+                case 9:
                     Mensaje(" A seleccionado Eliminar Cliente");
                     ClienteRestaurante.EliminarPersonaMenu();
                     break;
 
-                case 9:
+                case 10:
                     Mensaje(" A seleccionado Eliminar Boleta");
                     BoletaRestaurante.EliminarBoletaMenu();
                     break;
 
-                case 10:
+                case 11:
                     Mensaje(" A seleccionado Reporte Clientes");
                     ClienteRestaurante.GenerarReporteClientes();
                     break;
-                case 11:
+                case 12:
                     Mensaje(" A seleccionado Reporte Boletas");
                     ClienteRestaurante.GenerarReporteBoletas();
                     break;
                     
-                case 12:
+                case 13:
                     Mensaje(" A seleccionado salir del menu, muchas gracias");
                     break;
             }

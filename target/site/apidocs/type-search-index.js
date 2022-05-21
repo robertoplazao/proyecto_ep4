@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"com.antonio.proyecto","l":"BoletaRestaurante"},{"p":"com.antonio.proyecto","l":"ClienteRestaurante"},{"p":"com.antonio.proyecto","l":"Imprimible"},{"p":"com.antonio.proyecto","l":"OperacionesRestaurante"},{"p":"com.antonio.proyecto","l":"Proyecto"}];updateSearchResults();

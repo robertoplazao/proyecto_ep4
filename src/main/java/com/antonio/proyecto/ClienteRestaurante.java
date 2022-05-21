@@ -12,7 +12,10 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ClienteRestaurante {
+/**
+ * Clase de cliente del restaurante
+ */
+public class ClienteRestaurante implements Imprimible {
 
     private String NombreCliente;
     private String RutCliente;
@@ -26,6 +29,10 @@ public class ClienteRestaurante {
         return LBoletaCliente;
     }
 
+    /**
+     * Elimina una boleta asociada a este cliente
+     * @param CodigoBoleta codigo de la boleta a eliminar
+     */
     public void EliminarBoleta(int CodigoBoleta) {
         ListIterator<BoletaRestaurante> i = LBoletaCliente.listIterator();
         while(i.hasNext()) {
@@ -42,30 +49,53 @@ public class ClienteRestaurante {
 
     }
 
+    /**
+     * nombre del cliente
+     */
     public String getNombreCliente() {
         return NombreCliente;
     }
 
+    /**
+     * RUT del cliente
+     */
     public String getRutCliente() {
         return RutCliente;
     }
 
+    /**
+     * Fecha de nacimiento del cliente
+     */
     public Date getFechaN() {
         return FechaN;
     }
 
+    /**
+     * nombre del cliente
+     */
     public void setNombre(String NombreCliente) {
         this.NombreCliente = NombreCliente;
     }
 
+    /**
+     * RUT del cliente
+     */
     public void setRutCliente(String RutCliente) {
         this.RutCliente = RutCliente;
     }
 
+    /**
+     * Fecha de nacimiento del cliente
+     */
     public void setFechaN(Date FechaN) {
         this.FechaN = FechaN;
     }
 
+    /**
+     * Guarda una boleta asociada a este cliente
+     * @param boleta datos de la boleta a guardar
+     * @param indiceBoleta indice de la boleta si ya existe en la lista
+     */
     public void GuardarBoleta(BoletaRestaurante boleta, int indiceBoleta) {
         if(indiceBoleta == -1) {
             LBoletaCliente.add(boleta);
@@ -74,6 +104,10 @@ public class ClienteRestaurante {
         }
     }
 
+    /**
+     * Elimina una boleta del restaurante
+     * @param CodigoBoleta codigo de la boleta a eliminar
+     */
     public static void EliminarBoletaLista(int CodigoBoleta) {
         // buscamos el cliente con la boleta correspondiente
         for (int i = 0; i < LClienteRestaurante.size(); i++) {
@@ -85,6 +119,11 @@ public class ClienteRestaurante {
         }
     }
 
+    /**
+     * Registra un cliente del restaurante
+     * @param cliente datos del cliente
+     * @param indiceCliente indice del cliente por si ya existe en la lista
+     */
     public static void Guardar(ClienteRestaurante cliente, int indiceCliente) {
         if(indiceCliente == -1) {
             LClienteRestaurante.add(cliente);
@@ -94,6 +133,11 @@ public class ClienteRestaurante {
         }
     }
 
+    /**
+     * Busca un cliente en la lista interna del restaurante
+     * @param RutCliente rut del cliente a buscar
+     * @return cliente encontrado o nulo
+     */
     public static ClienteRestaurante BuscarPersona(String RutCliente) {
         for(ClienteRestaurante cliente : LClienteRestaurante) {
             if(cliente.RutCliente.equals(RutCliente)) {
@@ -103,6 +147,9 @@ public class ClienteRestaurante {
         return null;
     }
 
+    /**
+     * Menú para listar boletas de un cliente en particular
+     */
     public static void ListarBoletasClienteMenu() {
         System.out.println("Digite el Rut Cliente");
         Scanner Entrada=new Scanner(System.in);
@@ -112,6 +159,10 @@ public class ClienteRestaurante {
         BoletaRestaurante.ImprimirDatos(Cliente);
     }
 
+    /**
+     * Elimina un cliente registrado en el restaurante
+     * @param RutCliente rut del cliente a eliminar
+     */
     public static void EliminarPersona(String RutCliente) {
         // Primero borramos las boletas asociadas al cliente
         ClienteRestaurante cliente = BuscarPersona(RutCliente);
@@ -128,6 +179,11 @@ public class ClienteRestaurante {
         }
     }
 
+    /**
+     * Menú para registrar datos de cliente
+     * @param indiceCliente indice del cliente por si ya existe registrado
+     * @throws ParseException
+     */
     public static void CrearDatosCliente(int indiceCliente) throws ParseException {
         String Nombre, Rut;
         Date Fecha;
@@ -153,6 +209,9 @@ public class ClienteRestaurante {
 
     }
 
+    /**
+     * Menú para actualizar datos de un cliente existente
+     */
     public static void ActualizarPersonaMenu() {
         System.out.println("Digite el Rut Cliente");
         Scanner Entrada=new Scanner(System.in);
@@ -176,6 +235,9 @@ public class ClienteRestaurante {
         }
     }
 
+    /**
+     * Menú para actualizar datos de boleta
+     */
     public static void ActualizarBoletaMenu() {
         System.out.println("Digite el Codigo Boleta");
         Scanner Entrada=new Scanner(System.in);
@@ -203,6 +265,9 @@ public class ClienteRestaurante {
         }
     }
 
+    /**
+     * Menú para eliminar cliente registrado en el restaurante
+     */
     public static void EliminarPersonaMenu() {
         System.out.println("Digite el Rut Cliente");
         Scanner Entrada=new Scanner(System.in);
@@ -211,23 +276,36 @@ public class ClienteRestaurante {
         ClienteRestaurante.EliminarPersona(RutCliente);
     }
     
-
+    /**
+     * Imprime los datos de los clientes registrados
+     */
     public static void ImprimirDatos() {
         for (int i = 0; i < LClienteRestaurante.size(); i++) {
             System.out.println("***Cliente #" + (i + 1));
-            System.out.println("Nombre: " + LClienteRestaurante.get(i).NombreCliente);
-            System.out.println("Rut: " + LClienteRestaurante.get(i).RutCliente);
-            Calendar fechaN = Calendar.getInstance();
-            fechaN.setTime(LClienteRestaurante.get(i).FechaN);
-            System.out.println("Fecha N: " + fechaN.get(Calendar.DAY_OF_MONTH) + "/" + fechaN.get(Calendar.MONTH) + "/" + fechaN.get(Calendar.YEAR));
-            System.out.println("**Boletas:");
-            // Imprimiendo coleccion dentro de coleccion
-            for(BoletaRestaurante boleta : LClienteRestaurante.get(i).LBoletaCliente) {
-                boleta.Imprimir();
-            }
+            LClienteRestaurante.get(i).Imprimir();
         }
     }
 
+    /**
+     * Imprime los datos de este cliente
+     */
+    @Override
+    public void Imprimir() {
+        System.out.println("Nombre: " + this.NombreCliente);
+        System.out.println("Rut: " + this.RutCliente);
+        Calendar fechaN = Calendar.getInstance();
+        fechaN.setTime(this.FechaN);
+        System.out.println("Fecha N: " + fechaN.get(Calendar.DAY_OF_MONTH) + "/" + fechaN.get(Calendar.MONTH) + "/" + fechaN.get(Calendar.YEAR));
+        System.out.println("**Boletas:");
+        // Imprimiendo coleccion dentro de coleccion
+        for(BoletaRestaurante boleta : this.LBoletaCliente) {
+            boleta.Imprimir();
+        }
+    }
+
+    /**
+     * Imprime todas las boletas registradas en el restaurante
+     */
     public static void ImprimirBoletas() {
         System.out.println("***Boletas:");
         for (int i = 0; i < LClienteRestaurante.size(); i++) {
@@ -238,6 +316,9 @@ public class ClienteRestaurante {
         }
     }
 
+    /**
+     * Genera un reporte CSV con los datos de los clientes registrados
+     */
     public static void GenerarReporteClientes() {
         String separador = ",";
         try {
@@ -260,6 +341,9 @@ public class ClienteRestaurante {
         }
     }
 
+    /**
+     * Crea un reporte con los datos de las boletas registradas del restaurante
+     */
     public static void GenerarReporteBoletas() {
         String separador = ",";
         try {

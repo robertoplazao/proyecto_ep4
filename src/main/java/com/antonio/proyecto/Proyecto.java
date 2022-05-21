@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Project/Maven2/JavaApp/src/main/java/${packagePath}/${mainClassName}.java to edit this template
- */
 package com.antonio.proyecto;
 
 import java.text.ParseException;
@@ -10,6 +6,9 @@ import java.util.logging.Logger;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
+/**
+ * Clase principal del programa
+ */
 public class Proyecto {
 	
 	public static void main(String[] args) {
