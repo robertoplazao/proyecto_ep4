@@ -173,28 +173,28 @@ public class BoletaRestaurante implements Imprimible {
 
             int opcionProducto=0;
             do {
-                opcionProducto=Entrada.nextInt();
                 System.out.println("Seleccione el producto");
                 System.out.println("1-Ensalada");
-                System.out.println("2-Pescado");
+                System.out.println("2-Sopa");
                 System.out.println("3-Yogur");
-                System.out.println("4-Salir del menu");
+                System.out.println("4-Completar orden");
+                opcionProducto=Entrada.nextInt();
                 Producto producto = null;
                 switch(opcionProducto) {
                     case 1:
-                        System.out.println(" A seleccionado Ensalada");
                         producto = new Ensalada();
+                        System.out.println(" A seleccionado " + producto.getNombre());
                         break;
                     case 2:
-                        System.out.println(" A seleccionado Pescado");
-                        producto = new Pescado();
+                        producto = new Sopa();
+                        System.out.println(" A seleccionado " + producto.getNombre());
                         break;
                     case 3:
-                        System.out.println(" A seleccionado Yogur");
                         producto = new Yogur();
+                        System.out.println(" A seleccionado " + producto.getNombre());
                         break;
                     case 4:
-                        System.out.println(" A seleccionado Salir del menu");
+                        System.out.println(" A seleccionado Completar orden");
                         break;
                 }
                 if(producto != null) {

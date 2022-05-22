@@ -26,23 +26,27 @@
 com.antonio.proyecto
 'C:/Users/Willians/Documents/NetBeansProjects/proyecto/src/main/java/com/antonio/proyecto/BoletaRestaurante.java'
 'C:/Users/Willians/Documents/NetBeansProjects/proyecto/src/main/java/com/antonio/proyecto/ClienteRestaurante.java'
+'C:/Users/Willians/Documents/NetBeansProjects/proyecto/src/main/java/com/antonio/proyecto/Ensalada.java'
 'C:/Users/Willians/Documents/NetBeansProjects/proyecto/src/main/java/com/antonio/proyecto/Imprimible.java'
 'C:/Users/Willians/Documents/NetBeansProjects/proyecto/src/main/java/com/antonio/proyecto/OperacionesRestaurante.java'
+'C:/Users/Willians/Documents/NetBeansProjects/proyecto/src/main/java/com/antonio/proyecto/Producto.java'
 'C:/Users/Willians/Documents/NetBeansProjects/proyecto/src/main/java/com/antonio/proyecto/Proyecto.java'
-C:\Users\Willians\Documents\NetBeansProjects\proyecto\src\main\java = 1651783147173
-C:\Users\Willians\Documents\NetBeansProjects\proyecto\target\site\apidocs\allclasses-index.html = 1653139996247
-C:\Users\Willians\Documents\NetBeansProjects\proyecto\target\site\apidocs\allpackages-index.html = 1653139996252
-C:\Users\Willians\Documents\NetBeansProjects\proyecto\target\site\apidocs\element-list = 1653139996076
-C:\Users\Willians\Documents\NetBeansProjects\proyecto\target\site\apidocs\help-doc.html = 1653139996353
-C:\Users\Willians\Documents\NetBeansProjects\proyecto\target\site\apidocs\index-all.html = 1653139996334
-C:\Users\Willians\Documents\NetBeansProjects\proyecto\target\site\apidocs\index.html = 1653139996340
-C:\Users\Willians\Documents\NetBeansProjects\proyecto\target\site\apidocs\jquery-ui.overrides.css = 1653139996433
-C:\Users\Willians\Documents\NetBeansProjects\proyecto\target\site\apidocs\member-search-index.js = 1653139996266
-C:\Users\Willians\Documents\NetBeansProjects\proyecto\target\site\apidocs\module-search-index.js = 1653139996258
-C:\Users\Willians\Documents\NetBeansProjects\proyecto\target\site\apidocs\overview-tree.html = 1653139996213
-C:\Users\Willians\Documents\NetBeansProjects\proyecto\target\site\apidocs\package-search-index.js = 1653139996261
-C:\Users\Willians\Documents\NetBeansProjects\proyecto\target\site\apidocs\script.js = 1653139996374
-C:\Users\Willians\Documents\NetBeansProjects\proyecto\target\site\apidocs\search.js = 1653139996380
-C:\Users\Willians\Documents\NetBeansProjects\proyecto\target\site\apidocs\stylesheet.css = 1653139996366
-C:\Users\Willians\Documents\NetBeansProjects\proyecto\target\site\apidocs\tag-search-index.js = 1653139996268
-C:\Users\Willians\Documents\NetBeansProjects\proyecto\target\site\apidocs\type-search-index.js = 1653139996263
+'C:/Users/Willians/Documents/NetBeansProjects/proyecto/src/main/java/com/antonio/proyecto/Sopa.java'
+'C:/Users/Willians/Documents/NetBeansProjects/proyecto/src/main/java/com/antonio/proyecto/Yogur.java'
+C:\Users\Willians\Documents\NetBeansProjects\proyecto\src\main\java = 1653140138793
+C:\Users\Willians\Documents\NetBeansProjects\proyecto\target\site\apidocs\allclasses-index.html = 1653224451188
+C:\Users\Willians\Documents\NetBeansProjects\proyecto\target\site\apidocs\allpackages-index.html = 1653224451193
+C:\Users\Willians\Documents\NetBeansProjects\proyecto\target\site\apidocs\element-list = 1653224450946
+C:\Users\Willians\Documents\NetBeansProjects\proyecto\target\site\apidocs\help-doc.html = 1653224451274
+C:\Users\Willians\Documents\NetBeansProjects\proyecto\target\site\apidocs\index-all.html = 1653224451259
+C:\Users\Willians\Documents\NetBeansProjects\proyecto\target\site\apidocs\index.html = 1653224451263
+C:\Users\Willians\Documents\NetBeansProjects\proyecto\target\site\apidocs\jquery-ui.overrides.css = 1653224451360
+C:\Users\Willians\Documents\NetBeansProjects\proyecto\target\site\apidocs\member-search-index.js = 1653224451203
+C:\Users\Willians\Documents\NetBeansProjects\proyecto\target\site\apidocs\module-search-index.js = 1653224451196
+C:\Users\Willians\Documents\NetBeansProjects\proyecto\target\site\apidocs\overview-tree.html = 1653224451139
+C:\Users\Willians\Documents\NetBeansProjects\proyecto\target\site\apidocs\package-search-index.js = 1653224451199
+C:\Users\Willians\Documents\NetBeansProjects\proyecto\target\site\apidocs\script.js = 1653224451295
+C:\Users\Willians\Documents\NetBeansProjects\proyecto\target\site\apidocs\search.js = 1653224451299
+C:\Users\Willians\Documents\NetBeansProjects\proyecto\target\site\apidocs\stylesheet.css = 1653224451284
+C:\Users\Willians\Documents\NetBeansProjects\proyecto\target\site\apidocs\tag-search-index.js = 1653224451205
+C:\Users\Willians\Documents\NetBeansProjects\proyecto\target\site\apidocs\type-search-index.js = 1653224451201
